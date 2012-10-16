@@ -1,0 +1,7 @@
+This is an example application to show an issue with the appearance proxy and UIButton and UIBarButtonItem. During development we encountered an issue where when the navigation bar was hidden the UIBarButtonItem in the rightBarButtonItem would lose its button image when hidden in landscape. We were able to isolate this to setting the backgroundImage property on the appearance proxy for UIButton which shouldn't affect UIBarButtonItems. Secondly it was only affecting it after the NavigationBar was hidden and then shown again. 
+
+We were using a theme class to get values for these appearance settings and this particular setting was returning nil, which is the default for that property.
+
+    [[UIButton appearance] setBackgroundImage: nil forState: UIControlStateNormal];
+
+When you launch the app the edit button in the top right shows fine but if you hide the navigation bar and then show the navigation bar it no longer displays properly.

@@ -23,8 +23,6 @@
     // our application was using a theme class that would return properties for different aspects of the theme, when we ran into this issue the values being retruned for the backgroundImage on UIButton was nil so that is why I'm setting that value here to reproduce the issue we encountered. 
     
     [[UIButton appearance] setBackgroundImage: nil forState: UIControlStateNormal];
-    [[UIButton appearance] setBackgroundImage: nil forState: UIControlStateHighlighted];
-    [[UIButton appearance] setBackgroundImage: nil forState: UIControlStateDisabled];
 
     self.window = [[[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]] autorelease];
     // Override point for customization after application launch.
