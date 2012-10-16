@@ -7,7 +7,6 @@
 //
 
 #import "AVTAppDelegate.h"
-
 #import "AVTViewController.h"
 
 @implementation AVTAppDelegate
@@ -21,10 +20,17 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+    // our application was using a theme class that would return properties for different aspects of the theme, when we ran into this issue the values being retruned for the backgroundImage on UIButton was nil so that is why I'm setting that value here to reproduce the issue we encountered. 
+    
+    [[UIButton appearance] setBackgroundImage: nil forState: UIControlStateNormal];
+    [[UIButton appearance] setBackgroundImage: nil forState: UIControlStateHighlighted];
+    [[UIButton appearance] setBackgroundImage: nil forState: UIControlStateDisabled];
+
     self.window = [[[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]] autorelease];
     // Override point for customization after application launch.
     self.viewController = [[[AVTViewController alloc] initWithNibName:@"AVTViewController" bundle:nil] autorelease];
-    self.window.rootViewController = self.viewController;
+    UINavigationController *navigationController = [[[UINavigationController alloc] initWithRootViewController:self.viewController] autorelease];
+    self.window.rootViewController = navigationController;
     [self.window makeKeyAndVisible];
     return YES;
 }

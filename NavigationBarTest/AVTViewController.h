@@ -9,5 +9,8 @@
 #import <UIKit/UIKit.h>
 
 @interface AVTViewController : UIViewController
+@property (retain, nonatomic) IBOutlet UIButton *button;
+
+- (IBAction)actionToggleBars:(id)sender;
 
 @end
